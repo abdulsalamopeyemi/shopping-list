@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A responsive shopping list to plan groceries and track purchased items."
+    />
+    <title>Shopping List</title>
+    <!-- This template is static HTML. Link shopping-list.scss through your React project instead. -->
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- HEADER -->
+      <header class="app-header">
+        <div class="app-header__brand">
+          <span class="app-header__logo" aria-hidden="true">🧺</span>
+          <div>
+            <h1 class="app-header__title">Shopping List</h1>
+            <p class="app-header__subtitle">
+              Plan what to buy and track what you already have.
+            </p>
+          </div>
+        </div>
+        <div class="app-header__actions">
+          <button class="icon-button" type="button" aria-label="Change theme">
+            ☀️
+          </button>
+          <span class="app-header__avatar" aria-label="Demo avatar">JS</span>
+        </div>
+      </header>
+
+      <div class="dashboard-layout">
+        <main class="dashboard-main">
+          <!-- ADD ITEM FORM -->
+          <form class="item-form">
+            <div class="item-form__field item-form__field--name">
+              <label class="visually-hidden" for="item-name">Item name</label>
+              <span aria-hidden="true">🔍</span>
+              <input
+                class="item-form__input"
+                id="item-name"
+                type="text"
+                placeholder="Add an item..."
+              />
+            </div>
+            <div class="item-form__field item-form__field--quantity">
+              <label class="item-form__label" for="item-quantity">Qty</label>
+              <input
+                class="item-form__quantity"
+                id="item-quantity"
+                type="number"
+                min="1"
+                value="1"
+              />
+            </div>
+            <div class="item-form__field item-form__field--category">
+              <label class="item-form__label" for="item-category"
+                >Category</label
+              >
+              <select class="item-form__category" id="item-category">
+                <option>Produce</option>
+                <option>Dairy</option>
+                <option>Bakery</option>
+                <option>Meat</option>
+                <option>Pantry</option>
+                <option>Beverages</option>
+                <option>Household</option>
+              </select>
+            </div>
+            <button class="item-form__submit" type="submit">
+              <span aria-hidden="true">＋</span> Add Item
+            </button>
+            <!-- Show when React validation finds an error: -->
+            <!-- <p class="item-form__error" role="alert">Please enter an item name.</p> -->
+          </form>
+
+          <!-- SUMMARY CARDS -->
+          <section class="stats-grid" aria-label="Shopping list summary">
+            <div class="stat-card stat-card--total">
+              <span class="stat-card__icon" aria-hidden="true">☷</span>
+              <div>
+                <p class="stat-card__label">Total Items</p>
+                <p class="stat-card__value">8</p>
+              </div>
+            </div>
+            <div class="stat-card stat-card--remaining">
+              <span class="stat-card__icon" aria-hidden="true">◷</span>
+              <div>
+                <p class="stat-card__label">Remaining</p>
+                <p class="stat-card__value">5</p>
+              </div>
+            </div>
+            <div class="stat-card stat-card--purchased">
+              <span class="stat-card__icon" aria-hidden="true">✓</span>
+              <div>
+                <p class="stat-card__label">Purchased</p>
+                <p class="stat-card__value">3</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FILTERS -->
+          <div class="shopping-toolbar">
+            <div
+              class="filter-tabs"
+              role="group"
+              aria-label="Filter shopping items"
+            >
+              <button
+                class="filter-tabs__button filter-tabs__button--active"
+                type="button"
+                aria-pressed="true"
+              >
+                All (8)
+              </button>
+              <button
+                class="filter-tabs__button"
+                type="button"
+                aria-pressed="false"
+              >
+                Active (5)
+              </button>
+              <button
+                class="filter-tabs__button"
+                type="button"
+                aria-pressed="false"
+              >
+                Purchased (3)
+              </button>
+            </div>
+            <button class="clear-purchased-button" type="button">
+              🗑 Clear Purchased
+            </button>
+          </div>
+
+          <!-- SHOPPING ITEMS -->
+          <ul class="shopping-list">
+            <li class="shopping-item">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                aria-label="Mark Bananas as purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🍌</span>
+              <p class="shopping-item__name">Bananas</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--produce"
+                  >Produce</span
+                ><span class="shopping-item__quantity">Qty: 6</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Bananas"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Bananas"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                aria-label="Mark Milk as purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🥛</span>
+              <p class="shopping-item__name">Milk</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--dairy"
+                  >Dairy</span
+                ><span class="shopping-item__quantity">Qty: 1</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Milk"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Milk"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item shopping-item--purchased">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                checked
+                aria-label="Mark Bread as not purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🍞</span>
+              <p class="shopping-item__name">Bread</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--bakery"
+                  >Bakery</span
+                ><span class="shopping-item__quantity">Qty: 1</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Bread"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Bread"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                aria-label="Mark Eggs as purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🥚</span>
+              <p class="shopping-item__name">Eggs</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--dairy"
+                  >Dairy</span
+                ><span class="shopping-item__quantity">Qty: 1</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Eggs"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Eggs"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item shopping-item--purchased">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                checked
+                aria-label="Mark Chicken Breast as not purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🍗</span>
+              <p class="shopping-item__name">Chicken Breast</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--meat"
+                  >Meat</span
+                ><span class="shopping-item__quantity">Qty: 2</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Chicken Breast"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Chicken Breast"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                aria-label="Mark Pasta as purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🍝</span>
+              <p class="shopping-item__name">Pasta</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--pantry"
+                  >Pantry</span
+                ><span class="shopping-item__quantity">Qty: 1</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Pasta"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Pasta"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                aria-label="Mark Tomatoes as purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🍅</span>
+              <p class="shopping-item__name">Tomatoes</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--produce"
+                  >Produce</span
+                ><span class="shopping-item__quantity">Qty: 4</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Tomatoes"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Tomatoes"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+            <li class="shopping-item shopping-item--purchased">
+              <input
+                class="shopping-item__checkbox"
+                type="checkbox"
+                checked
+                aria-label="Mark Cheese as not purchased"
+              />
+              <span class="shopping-item__emoji" aria-hidden="true">🧀</span>
+              <p class="shopping-item__name">Cheese</p>
+              <div class="shopping-item__meta">
+                <span
+                  class="shopping-item__category category-badge category-badge--dairy"
+                  >Dairy</span
+                ><span class="shopping-item__quantity">Qty: 1</span>
+              </div>
+              <div class="shopping-item__actions">
+                <button
+                  class="item-action item-action--edit"
+                  type="button"
+                  aria-label="Edit Cheese"
+                >
+                  ✎</button
+                ><button
+                  class="item-action item-action--delete"
+                  type="button"
+                  aria-label="Delete Cheese"
+                >
+                  🗑
+                </button>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Use this INSTEAD of the list when there are no items to show -->
+          <!--
+          <div class="empty-state">
+            <span class="empty-state__icon" aria-hidden="true">🧺</span>
+            <h2 class="empty-state__title">Your shopping list is empty</h2>
+            <p class="empty-state__text">Add your first item using the form above.</p>
+          </div>
+          -->
+        </main>
+
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar" aria-label="Shopping tips">
+          <section class="promo-card">
+            <div class="promo-card__illustration" aria-hidden="true">🛍️</div>
+            <h2 class="promo-card__title">Stay organized</h2>
+            <p class="promo-card__description">
+              A simple way to keep track of everything you need.
+            </p>
+          </section>
+          <section class="tips-card">
+            <div class="tips-card__heading">
+              <span class="tips-card__icon" aria-hidden="true">💡</span>
+              <h2 class="tips-card__title">Tips &amp; Ideas</h2>
+            </div>
+            <ul class="tips-card__list">
+              <li class="tips-card__item">
+                <span class="tips-card__check" aria-hidden="true">✓</span>Group
+                items by category
+              </li>
+              <li class="tips-card__item">
+                <span class="tips-card__check" aria-hidden="true">✓</span>Check
+                off items as you shop
+              </li>
+              <li class="tips-card__item">
+                <span class="tips-card__check" aria-hidden="true">✓</span>Use
+                quantities to stay accurate
+              </li>
+              <li class="tips-card__item">
+                <span class="tips-card__check" aria-hidden="true">✓</span>Clear
+                purchased items when done
+              </li>
+              <li class="tips-card__item">
+                <span class="tips-card__check" aria-hidden="true">✓</span>Keep
+                your list updated regularly
+              </li>
+            </ul>
+          </section>
+          <section class="info-card">
+            <span class="info-card__icon" aria-hidden="true">🌱</span>
+            <div>
+              <h2 class="info-card__title">Need some ideas?</h2>
+              <p class="info-card__text">
+                Common categories include produce, dairy, meat, pantry,
+                beverages, and household items.
+              </p>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>

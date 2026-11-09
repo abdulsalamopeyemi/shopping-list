@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import ShoppingList from "./ShoppingList";
 import { useEffect, useState } from "react";
 
-const intialItems = [
+const intialItem = [
   {
     emoji: " 🍌",
     category: "produce",
@@ -74,8 +74,7 @@ export default function Main() {
   const [active, setActive] = useState(1);
   const [sortBy, setSortBy] = useState("default-order");
   const [items, setItems] = useState(() => {
-    const items =
-      JSON.parse(localStorage.getItem("shoppingList")) || intialItems;
+    const items = JSON.parse(localStorage.getItem("shoppingList")) || [];
     return items;
   });
 

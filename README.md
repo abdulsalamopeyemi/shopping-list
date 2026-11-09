@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Shopping List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple, responsive shopping-list app for planning what to buy and tracking items as you shop.
 
-## Available Scripts
+**[Live site](https://deluxe-dusk-a0b6c8.netlify.app)**
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Add items with a quantity and category.
+- Mark items as purchased, or remove individual items from the list.
+- View all items, active items, or purchased items.
+- Sort the list by name, quantity, category, or purchase status.
+- See a summary of total, remaining, and purchased items.
+- Keep your list saved in your browser with `localStorage`.
+- Clear the list after confirming the action.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Built with
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- Sass
+- lucide-react
 
-### `npm test`
+## Getting started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Requirements
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) and npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Install and run
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/abdulsalamopeyemi/shopping-list.git
+cd shopping-list
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Available scripts
 
-### `npm run eject`
+| Command | Description |
+| --- | --- |
+| `npm start` | Start the development server. |
+| `npm test` | Run tests in interactive watch mode. |
+| `npm run build` | Create an optimized production build in `build/`. |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Data storage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Shopping-list items are stored in the browser's `localStorage`. They remain available on that browser after a reload, but are not synced across devices or browsers.

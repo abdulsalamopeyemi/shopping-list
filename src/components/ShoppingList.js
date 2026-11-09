@@ -1,4 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
+import { use, useState } from "react";
 export default function ShoppingList({ items, onToggle, onDelete }) {
   return (
     <ul className="shopping-list">
@@ -26,6 +27,7 @@ function List({ item, onToggle, onDelete }) {
         aria-label={`Mark ${item.name}  as purchased`}
         onChange={() => onToggle(item.id)}
       />
+
       <span className="shopping-item__emoji" aria-hidden="true">
         {item.emoji}
       </span>
@@ -38,29 +40,43 @@ function List({ item, onToggle, onDelete }) {
         </span>
         <span className="shopping-item__quantity">Qty: {item.qty}</span>
       </div>
+
       <div className="shopping-item__actions">
-        <button
-          className="item-action item-action--edit"
-          type="button"
-          aria-label="Edit Bananas"
-          title="edit"
-        >
-          <span>
-            <Pencil />
-          </span>
-        </button>
-        <button
-          className="item-action item-action--delete"
-          type="button"
-          aria-label="Delete Bananas"
+        {/* <Button
+          content={
+            <span>
+              <Pencil />
+            </span>
+          }
+          btnFunc="edit"
+          name={item.name}
+        /> */}
+
+        <Button
+          content={
+            <span>
+              <Trash2 />
+            </span>
+          }
+          btnFunc="delete"
+          name={item.name}
           onClick={() => onDelete(item.id)}
-          title="delete"
-        >
-          <span>
-            <Trash2 />
-          </span>
-        </button>
+        />
       </div>
     </li>
+  );
+}
+
+function Button({ content, onClick, btnFunc, name }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`item-action item-action--${btnFunc}`}
+      type="button"
+      title={btnFunc}
+      aria-label={`${btnFunc} ${name}`}
+    >
+      {content}
+    </button>
   );
 }
